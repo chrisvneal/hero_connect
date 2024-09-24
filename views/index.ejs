@@ -7,15 +7,19 @@
 		<link rel="stylesheet" href="/css/styles.css" />
 	</head>
 	<body>
-		<h1>Welcome to <%= title %></h1>
-		<div class="character-search">
-			<form action="/herosearch" method="post">
-				<input type="text" name="heroname" />
-				<button type="submit">Search</button>
-				<button type="submit" formaction="/random">Random</button>
-			</form>
-		</div>
+		<div class="container">
+			<h1>Welcome to <%= title %></h1>
+			<div class="character-search">
+				<form action="/herosearch" method="post">
+					<input type="text" name="heroname" />
+					<button type="submit">Search</button>
+					<button type="submit" formaction="/random">Random</button>
+				</form>
+			</div>
 
-		<h2><%= data.name %></h2>
+			<div class="character-info">
+				<h2 class="character-info__name"><%= data.name %></h2>
+			</div>
+		</div>
 	</body>
 </html>

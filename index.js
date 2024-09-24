@@ -11,19 +11,23 @@ app.use(express.urlencoded({ extended: true }));
 
 const API_KEY = process.env.API_KEY;
 const baseURL = "https://superheroapi.com/api/";
+const url = `${baseURL}${API_KEY}/`;
 
 let names = [];
 
 app.get("/", (req, res) => {
-	getData(req, res);
+	// getData(req, res);
+	res.render("index.ejs", { title: "Home Connect" });
 });
 
-let getData = async (req, res) => {
+// let characterData;
+
+let getCharacterData = async (req, res) => {
 	try {
-		const response = await axios.get(`${baseURL}${API_KEY}/23`);
-		const data = response.data;
-		names.push(data.name);
-		res.render("index.ejs", { title: "Hero Connect", names });
+		const response = await axios.get(`${url}${25}`);
+		const characterData = response.data;
+		// names.push(data.name);
+		res.render("index.ejs", { title: "Hero Connect", characterData });
 	} catch (error) {
 		console.error(`There was an error: ${error}`);
 	}

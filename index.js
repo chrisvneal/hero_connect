@@ -1,5 +1,7 @@
 import express from "express";
 import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -7,7 +9,7 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-const API_KEY = "08a2729c1ca5722f668f14f4c28e04c4";
+const API_KEY = process.env.API_KEY;
 const baseURL = "https://superheroapi.com/api/";
 
 let names = [];

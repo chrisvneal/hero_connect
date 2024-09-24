@@ -15,9 +15,25 @@ const url = `${baseURL}${API_KEY}/`;
 
 let names = [];
 
+<<<<<<< HEAD
 app.get("/", async (req, res) => {
 	try {
 		const characterData = await getCharacterData();
+=======
+app.get("/", (req, res) => {
+	getCharacterData(req, res);
+	// res.render("index.ejs", { title: "Home Connect" });
+});
+
+// let characterData;
+
+let getCharacterData = async (req, res) => {
+	const randomHeroID = Math.floor(Math.random() * 732) + 1;
+	try {
+		const response = await axios.get(`${url}${randomHeroID}`);
+		const characterData = response.data;
+		// names.push(data.name);
+>>>>>>> 0f6018f4fe0cbdf448b2ebcd0bb4f515da512609
 		res.render("index.ejs", { title: "Hero Connect", data: characterData });
 	} catch (error) {
 		console.error(`There was an error: ${error}`);

@@ -8,6 +8,13 @@
 	</head>
 	<body>
 		<h1>Welcome to <%= title %></h1>
+		<div class="character-search">
+			<form action="/herosearch" method="post">
+				<input type="text" name="heroname" />
+				<button type="submit">Search</button>
+			</form>
+		</div>
+
 		<h2><%= data.name %></h2>
 	</body>
 </html>

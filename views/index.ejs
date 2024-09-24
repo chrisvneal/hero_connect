@@ -19,7 +19,10 @@
 
 			<%if (locals.data) {%>
 			<div class="character-info">
-				<h2 class="character-info__name"><%= data.name %></h2>
+				<div class="character-image">
+					<img src="<%= data.image.url %>" alt="character profile image" />
+				</div>
+				<h2 class="character__name"><%= data.name %></h2>
 
 				<!-- Bio info -->
 				<p>Real Name: <%= data.biography["full-name"] %></p>
@@ -28,7 +31,7 @@
 				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0] !==
 				"-") { %>
 				<h2>Aliases</h2>
-				<ul class="character-aliases">
+				<ul class="character__aliases">
 					<%data.biography.aliases.forEach(alias => {%>
 					<li><%= alias %></li>
 					<%})%>

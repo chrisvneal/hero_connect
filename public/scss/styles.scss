@@ -11,3 +11,13 @@ h1 {
 .character-search {
     margin-bottom: 1rem;
 }
+
+.character-image {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}

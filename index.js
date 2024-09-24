@@ -40,7 +40,7 @@ app.post("/herosearch", async (req, res) => {
 	}
 });
 
-app.post("/random", async (req, res) => {
+app.post("/", async (req, res) => {
 	try {
 		// on default load, start with random character selected
 		const randomHeroID = Math.floor(Math.random() * 732 + 1);

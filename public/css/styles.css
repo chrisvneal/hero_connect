@@ -5,10 +5,11 @@
 
 h1 {
   font-size: 1.5rem;
+  margin-bottom: 1.3rem;
 }
 
 .character-search {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

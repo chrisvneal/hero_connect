@@ -1,0 +1,20 @@
+{
+  "name": "hero_connect",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "concurrent": "^0.3.2",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "sass": "^1.79.3"
+  }
+}

@@ -7,8 +7,10 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
+let names = ["Michael", "Manny"];
+
 app.get("/", (req, res) => {
-	res.render("index.ejs");
+	res.render("index.ejs", { title: "Hero Connect", names });
 });
 
 app.listen(port, () => {

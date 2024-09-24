@@ -3,10 +3,17 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title><%= title %></title>
 		<link rel="stylesheet" href="/css/styles.css" />
 	</head>
 	<body>
-		<p>Welcome to Hero Connect</p>
+		<p>Welcome to <%= title %></p>
+		<% if (locals.names) { %>
+		<ul>
+			<% names.forEach(name => { %>
+			<li><%= name %></li>
+			<% }) %>
+		</ul>
+		<%}%>
 	</body>
 </html>

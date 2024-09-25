@@ -25,7 +25,7 @@ app.get("/", async (req, res) => {
 	}
 });
 
-app.post("/herosearch", async (req, res) => {
+app.post("/", async (req, res) => {
 	try {
 		const searchedName = req.body.heroname;
 		const characterData = await getCharacterData(searchedName);

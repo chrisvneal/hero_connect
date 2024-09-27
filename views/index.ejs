@@ -29,14 +29,16 @@
 				<p>Real Name: <%= data.biography["full-name"] %></p>
 
 				<!-- Aliases  -->
-				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0] !==
-				"-") { %>
+				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0]
+				!=="-") { %>
 				<h2>Aliases</h2>
 				<ul class="character__aliases">
 					<%data.biography.aliases.forEach(alias => {%>
 					<li><%= alias %></li>
+					<%})%>
 				</ul>
-				<%})%> <%if (typeof data.powerstats.power == "number") {%>
+
+				<%}%> <%if (typeof data.powerstats.power == "number") {%>
 				<div class="stats">
 					<p>These are stats</p>
 					<label for="power">Power</label>
@@ -45,7 +47,7 @@
 						value="<%= data.powerstats.power %>"
 						max="100"></progress>
 				</div>
-				<%}%> <%}%> <%}%>
+				<%}%> <%}%>
 			</div>
 		</div>
 	</body>

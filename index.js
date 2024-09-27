@@ -26,8 +26,13 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
+	let searchedName;
 	try {
-		const searchedName = req.body.heroname;
+		if (req.body.heroname) {
+			searchedName = req.body.heroname;
+		} else {
+			searchedName = Math.floor(Math.random() * 732 + 1);
+		}
 		const characterData = await getCharacterData(searchedName);
 
 		res.render("index.ejs", {
@@ -37,18 +42,6 @@ app.post("/", async (req, res) => {
 	} catch (error) {
 		console.error(`There was an error: ${error}`);
 		res.status(500).send("An error occurred while searching for the hero.");
-	}
-});
-
-app.post("/", async (req, res) => {
-	try {
-		// on default load, start with random character selected
-		const randomHeroID = Math.floor(Math.random() * 732 + 1);
-
-		const characterData = await getCharacterData(randomHeroID);
-		res.render("index.ejs", { title: "Home Connect", data: characterData });
-	} catch (error) {
-		console.error(`There was an error: ${error}`);
 	}
 });
 

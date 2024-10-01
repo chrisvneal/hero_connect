@@ -42,7 +42,32 @@
 					</ul>
 				</div>
 
-				<%}%> <%# power stats %>
+				<%}%>
+				<!-- Traits -->
+
+				<div class="traits"></div>
+					<h2>Traits</h2>
+					<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%>
+
+					<!-- Function to handle null, "null", or "-" values -->
+					<% const sanitizeValue = function(val) {%> <%return (val === null || val === "null" || val === "-") ? "" : val;%> <%};%>
+
+					<!-- If value is an array, loop through its contents and sanitize each item -->
+					<% if (Array.isArray(value)) {%>
+					<!-- Join the array values into a string -->
+					<%value = value.map(sanitizeValue).join(', '); %> <%} else {%>
+					<!-- Sanitize single values -->
+					<%value = sanitizeValue(value);%> <%}%> %>
+
+					<p>
+						<%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:
+						<span><%= value %></span>
+					</p>
+
+					<% } %>
+				</div>
+				<!-- Power stats-->
+
 				<div class="stats">
 					<h2>Stats</h2>
 					<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = "0"; } %>
@@ -55,6 +80,8 @@
 					<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
 					<% } %>
 				</div>
+
+				
 			</div>
 
 			<script>

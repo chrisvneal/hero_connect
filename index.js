@@ -19,7 +19,7 @@ app.get("/", async (req, res) => {
 		const randomHeroID = Math.floor(Math.random() * 732 + 1);
 
 		const characterData = await getCharacterData(randomHeroID);
-		res.render("index.ejs", { title: "Home Connect", data: characterData });
+		res.render("index.ejs", { title: "Hero Connect", data: characterData });
 	} catch (error) {
 		console.error(`There was an error: ${error}`);
 	}

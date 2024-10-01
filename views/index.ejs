@@ -27,13 +27,12 @@
 				<!-- Bio info -->
 				<div class="bio character-info">
 					<h2 class="character__name"><%= data.name %> (<%= data.id %>)</h2>
-					<p class="alignment"><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></p>
-					<p class="publisher"><%= data.biography.publisher == "null" ? "Publisher unknown" : data.biography.publisher%></p>
-					<!-- <p>Place of Birth: <%= sanitizeValue(data.biography["place-of-birth"])%></p> -->
-					<p>Place of Birth: <%= data.biography["place-of-birth"] == "null" || data.biography["place-of-birth"] == "-" ? "Location unknown" : data.biography["place-of-birth"] %></p>
+					<p class="alignment"><span class="character-property-title">Alignment: </span><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></p>
+					<p class="publisher"><span class="character-property-title">Publisher: </span><%= data.biography.publisher == "null" ? "Publisher unknown" : data.biography.publisher%></p>
+					<p><span class="character-property-title">Place of Birth: </span><%= data.biography["place-of-birth"] == "null" || data.biography["place-of-birth"] == "-" ? "Location unknown" : data.biography["place-of-birth"] %></p>
 
 					<%if (data.biography["full-name"]) {%>
-					<p>Real Name: <%= data.biography["full-name"] %></p>
+					<p><span class="character-property-title">Real Name: </span><%= data.biography["full-name"] %></p>
 					<%}%>
 				</div>
 
@@ -64,8 +63,8 @@
 				<%value = sanitizeValue(value);%> <%}%> %>
 
 				<p>
-					<%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:
-					<span><%= value %></span>
+					<span class="character-property-title"><%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:</span>
+					<%= value %>
 				</p>
 
 				<% } %>

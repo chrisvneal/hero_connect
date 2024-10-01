@@ -39,7 +39,7 @@
 					<li><%= alias %></li>
 					<%})%>
 				</ul>
-				<%}%> <%# power stats %> <% if (data.powerstats) { %>
+				<%}%> <%# power stats %>
 				<div class="stats">
 					<h2>Stats</h2>
 					<% for (let stat in data.powerstats) { %> <% let value =
@@ -54,7 +54,8 @@
 					<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
 					<% } %>
 				</div>
-				<% } %> <%}%>
+
+				<%}%>
 			</div>
 		</div>
 	</body>

@@ -26,7 +26,9 @@
 				<!-- Bio info -->
 				<h2 class="character__name"><%= data.name %> (<%= data.id %>)</h2>
 
+				<%if (locals.data.biography["full-name"]) {%>
 				<p>Real Name: <%= data.biography["full-name"] %></p>
+				<%}%>
 
 				<!-- Aliases  -->
 				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0]

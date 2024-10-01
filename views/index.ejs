@@ -13,11 +13,10 @@
 				<form action="/" method="post">
 					<input type="text" name="heroname" />
 					<button type="submit">Search</button>
-					<button type="submit" formaction="/">Random</button>
+					<button type="button" formaction="/">Random</button>
 				</form>
 			</div>
 
-			<%if (locals.data) {%>
 			<div class="character-info">
 				<div class="character-image">
 					<img src="<%= data.image.url %>" alt="character profile image" />
@@ -26,13 +25,12 @@
 				<!-- Bio info -->
 				<h2 class="character__name"><%= data.name %> (<%= data.id %>)</h2>
 
-				<%if (locals.data.biography["full-name"]) {%>
+				<%if (data.biography["full-name"]) {%>
 				<p>Real Name: <%= data.biography["full-name"] %></p>
 				<%}%>
 
 				<!-- Aliases  -->
-				<%if (data.biography.aliases.length > 0 &&
-				data.biography.aliases[0]!=="-") { %>
+				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0]!=="-") { %>
 				<h2>Aliases</h2>
 				<ul class="character__aliases">
 					<%data.biography.aliases.forEach(alias => {%>
@@ -42,9 +40,7 @@
 				<%}%> <%# power stats %>
 				<div class="stats">
 					<h2>Stats</h2>
-					<% for (let stat in data.powerstats) { %> <% let value =
-					data.powerstats[stat]; %> <% if (value === null || value === "null") {
-					value = "0"; } %>
+					<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = "0"; } %>
 					<label for="<%= stat %>">
 						<h3>
 							<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
@@ -54,8 +50,6 @@
 					<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
 					<% } %>
 				</div>
-
-				<%}%>
 			</div>
 		</div>
 	</body>

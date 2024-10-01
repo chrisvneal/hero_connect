@@ -7,6 +7,8 @@
 		<link rel="stylesheet" href="/css/styles.css" />
 	</head>
 	<body>
+		<!-- Function to handle null, "null", or "-" values -->
+		<% const sanitizeValue = function(val) {%> <% return (val === null || val === "null" || val === "-" || (typeof val === 'string' && val.includes('-'))) ? "" : val;%> <%};%>
 		<div class="container">
 			<h1>Welcome to <%= title %></h1>
 			<div class="character-search">
@@ -27,6 +29,8 @@
 					<h2 class="character__name"><%= data.name %> (<%= data.id %>)</h2>
 					<p class="alignment"><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></p>
 					<p class="publisher"><%= data.biography.publisher == "null" ? "Publisher unknown" : data.biography.publisher%></p>
+					<!-- <p>Place of Birth: <%= sanitizeValue(data.biography["place-of-birth"])%></p> -->
+					<p>Place of Birth: <%= data.biography["place-of-birth"] == "null" || data.biography["place-of-birth"] == "-" ? "Location unknown" : data.biography["place-of-birth"] %></p>
 
 					<%if (data.biography["full-name"]) {%>
 					<p>Real Name: <%= data.biography["full-name"] %></p>
@@ -46,8 +50,6 @@
 
 				<%}%>
 
-				<!-- Function to handle null, "null", or "-" values -->
-				<% const sanitizeValue = function(val) {%> <% return (val === null || val === "null" || val === "-" || (typeof val === 'string' && val.includes('-'))) ? "" : val;%> <%};%>
 				<!-- Traits -->
 
 				<div class="traits character-info"></div>

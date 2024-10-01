@@ -85,7 +85,7 @@
 
 
 				<div class="affiliations character-info">
-					<h2>Group Affiliations</h2>
+				
 					
 					<% let affiliations = data.connections["group-affiliation"]; %>
 				  
@@ -95,6 +95,7 @@
 				  
 					 
 					  <%if (affiliations && affiliations.length > 0) { 	%>
+						<h2>Group Affiliations <span>(<%= affiliations[0] == "-" ? "0" : affiliations.length %>)</span></h2>
 					  <ul>
 						<% affiliations.forEach(function(affiliation) { %>
 						  <li><%= affiliation=="null" || affiliation=="-" ? "None" : affiliation %></li>

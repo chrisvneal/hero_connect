@@ -26,4 +26,8 @@ h1 {
   height: auto;
 }
 
+.stats {
+  outline: 1px solid red;
+}
+
 /*# sourceMappingURL=styles.css.map */

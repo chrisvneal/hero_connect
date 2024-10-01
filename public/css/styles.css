@@ -17,7 +17,7 @@ ul {
   height: auto;
 }
 
-.stats {
+.stats, .aliases {
   outline: 1px dotted lightgray;
 }
 

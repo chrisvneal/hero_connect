@@ -39,22 +39,22 @@
 					<li><%= alias %></li>
 					<%})%>
 				</ul>
-				<%}%>
-
-				<!-- Power stats -->
-
-				<%if (typeof data.powerstats.power) {%> <%let power;%> <%if
-				(data.powerstats.power =="null") {%> <%power = "";%> <%} else {%>
-				<%power = data.powerstats.power%> <%}%>
-
+				<%}%> <%# power stats %> <% if (data.powerstats) { %>
 				<div class="stats">
 					<h2>Stats</h2>
-					<label for="power">
-						<h3>Power: <span><%= power%></span></h3>
+					<% for (let stat in data.powerstats) { %> <% let value =
+					data.powerstats[stat]; %> <% if (value === null || value === "null") {
+					value = "0"; } %>
+					<label for="<%= stat %>">
+						<h3>
+							<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
+							<span><%= value %></span>
+						</h3>
 					</label>
-					<progress id="power" value="<%= power %>" max="100"></progress>
+					<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
+					<% } %>
 				</div>
-				<%}%> <%}%>
+				<% } %> <%}%>
 			</div>
 		</div>
 	</body>

@@ -36,7 +36,7 @@ app.post("/", async (req, res) => {
 		const characterData = await getCharacterData(searchedName);
 
 		res.render("index.ejs", {
-			title: "Home Connect",
+			title: "Hero Connect",
 			data: characterData,
 		});
 	} catch (error) {

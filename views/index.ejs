@@ -31,23 +31,28 @@
 				<%}%>
 
 				<!-- Aliases  -->
-				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0]
-				!=="-") { %>
+				<%if (data.biography.aliases.length > 0 &&
+				data.biography.aliases[0]!=="-") { %>
 				<h2>Aliases</h2>
 				<ul class="character__aliases">
 					<%data.biography.aliases.forEach(alias => {%>
 					<li><%= alias %></li>
 					<%})%>
 				</ul>
+				<%}%>
 
-				<%}%> <%if (typeof data.powerstats.power == "number") {%>
+				<!-- Power stats -->
+
+				<%if (typeof data.powerstats.power) {%> <%let power;%> <%if
+				(data.powerstats.power =="null") {%> <%power = "";%> <%} else {%>
+				<%power = data.powerstats.power%> <%}%>
+
 				<div class="stats">
-					<p>These are stats</p>
-					<label for="power">Power</label>
-					<progress
-						id="power"
-						value="<%= data.powerstats.power %>"
-						max="100"></progress>
+					<h2>Stats</h2>
+					<label for="power">
+						<h3>Power: <span><%= power%></span></h3>
+					</label>
+					<progress id="power" value="<%= power %>" max="100"></progress>
 				</div>
 				<%}%> <%}%>
 			</div>

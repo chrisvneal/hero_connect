@@ -13,7 +13,7 @@
 				<form action="/" method="post">
 					<input type="text" name="heroname" />
 					<button type="submit">Search</button>
-					<button type="button" formaction="/">Random</button>
+					<button type="button" formaction="/" id="randomButton">Random</button>
 				</form>
 			</div>
 
@@ -51,6 +51,16 @@
 					<% } %>
 				</div>
 			</div>
+
+			<script>
+				// Add an event listener for the "Random" button
+				document.querySelector("#randomButton").addEventListener("click", () => {
+					// alert("random");
+
+					// Submit the form or trigger any random hero functionality
+					document.querySelector("form").submit(); // This will submit the form
+				});
+			</script>
 		</div>
 	</body>
 </html>

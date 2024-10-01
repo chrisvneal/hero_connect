@@ -66,7 +66,3 @@ let getCharacterData = async (character) => {
 app.listen(port, () => {
 	console.log(`Server running on port ${port}`);
 });
-
-// document.querySelector("#randomButton").addEventListener("click", () => {
-// 	alert("random");
-// });

@@ -17,7 +17,7 @@ ul {
   height: auto;
 }
 
-.stats, .aliases, .traits {
+.character-info {
   outline: 1px dotted lightgray;
 }
 

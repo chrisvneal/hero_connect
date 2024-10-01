@@ -23,17 +23,19 @@
 				</div>
 
 				<!-- Bio info -->
-				<h2 class="character__name"><%= data.name %> (<%= data.id %>)</h2>
+				<div class="bio character-info">
+					<h2 class="character__name"><%= data.name %> (<%= data.id %>)</h2>
 				<p class="alignment"><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></p>
 				<p class="publisher"><%= data.biography.publisher == "null" ? "Publisher unknown" : data.biography.publisher%></p>
 
 				<%if (data.biography["full-name"]) {%>
 				<p>Real Name: <%= data.biography["full-name"] %></p>
 				<%}%>
+				</div>
 
 				<!-- Aliases  -->
 				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0]!=="-") { %>
-				<div class="aliases">
+				<div class="aliases character-info">
 					<h2>Aliases</h2>
 					<ul class="character__aliases">
 						<%data.biography.aliases.forEach(alias => {%>
@@ -45,7 +47,7 @@
 				<%}%>
 				<!-- Traits -->
 
-				<div class="traits"></div>
+				<div class="traits character-info"></div>
 					<h2>Traits</h2>
 					<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%>
 
@@ -68,9 +70,9 @@
 				</div>
 				<!-- Power stats-->
 
-				<div class="stats">
+				<div class="stats character-info">
 					<h2>Stats</h2>
-					<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = "0"; } %>
+					<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = ""; } %>
 					<label for="<%= stat %>">
 						<h3>
 							<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
@@ -80,6 +82,28 @@
 					<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
 					<% } %>
 				</div>
+
+
+				<div class="affiliations character-info">
+					<h2>Group Affiliations</h2>
+					
+					<% let affiliations = data.connections["group-affiliation"]; %>
+				  
+					<%   if (typeof affiliations === 'string') {%>
+						<% affiliations = affiliations.split(',').map(item => item.trim());%> 
+					 <% }%>
+				  
+					 
+					  <%if (affiliations && affiliations.length > 0) { 	%>
+					  <ul>
+						<% affiliations.forEach(function(affiliation) { %>
+						  <li><%= affiliation=="null" || affiliation=="-" ? "None" : affiliation %></li>
+						<% }); %>
+					  </ul>
+					<% } else { %>
+					  <p>No group affiliations available.</p>
+					<% } %>
+				  </div>
 
 				
 			</div>

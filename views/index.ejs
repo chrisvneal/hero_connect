@@ -14,7 +14,7 @@
 		<!-- Function to handle null, "null", or "-" values -->
 		<% const sanitizeValue = function(val) {%> <% return (val === null || val === "null" || val === "-" || (typeof val === 'string' && val.includes('-'))) ? "" : val;%> <%};%>
 		<div class="container">
-			<h1>Welcome to <%= title %></h1>
+			<h1 class="mt-b">Welcome to <%= title %></h1>
 			<div class="character-search">
 				<form action="/" method="post">
 					<input type="text" name="heroname" />
@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="character-data">
-				<div class="character-image">
+				<div class="character-image mt-b">
 					<img src="<%= data.image.url %>" alt="character profile image" />
 				</div>
 

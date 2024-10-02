@@ -39,13 +39,13 @@ ul {
   margin-bottom: 1.5rem;
 }
 .character-data-set li {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.25rem;
 }
 .character-data-set h2 {
   margin-top: 0.2rem;
 }
 
-.character-image {
+.mt-b {
   margin: 1rem 0;
 }
 

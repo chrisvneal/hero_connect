@@ -11,6 +11,10 @@ ul {
   list-style: none;
 }
 
+.mt-b {
+  margin: 1rem 0;
+}
+
 .character-image {
   border-radius: 50%;
   height: 180px;
@@ -43,10 +47,6 @@ ul {
 }
 .character-data-set h2 {
   margin-top: 0.4rem;
-}
-
-.mt-b {
-  margin: 1rem 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

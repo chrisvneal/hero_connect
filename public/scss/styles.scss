@@ -6,13 +6,15 @@ $lightgray: lighten(lightgray, 7%);
 
 body {
     font-family:"Afacad Flux", sans-serif;
-}
+} 
 
 ul {
     list-style: none;
 }
 
-
+.mt-b {
+    margin: 1rem 0;
+}
 
 .character-image {
     border-radius: 50%;
@@ -35,7 +37,6 @@ ul {
 
 .character-image + .character-data-set {
 border-top: none;
-
 }
 
 .character-data-set {
@@ -51,6 +52,3 @@ border-top: none;
     }
 }
 
-.mt-b {
-    margin: 1rem 0;
-}

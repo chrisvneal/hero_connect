@@ -19,13 +19,13 @@
 				</form>
 			</div>
 
-			<div class="character-info">
+			<div class="character-data">
 				<div class="character-image">
 					<img src="<%= data.image.url %>" alt="character profile image" />
 				</div>
 
 				<!-- Bio info -->
-				<div class="bio character-info">
+				<div class="bio character-data-set">
 					<h2 class="character__name"><%= data.name %> (<%= data.id %>)</h2>
 					<p class="alignment"><span class="character-property-title">Alignment: </span><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></p>
 					<%if (data.biography["full-name"]) {%>
@@ -38,7 +38,7 @@
 
 				<!-- Aliases  -->
 				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0]!=="-") { %>
-				<div class="aliases character-info">
+				<div class="aliases character-data-set">
 					<h2>Aliases</h2>
 					<ul class="character__aliases">
 						<%data.biography.aliases.forEach(alias => {%>
@@ -51,7 +51,7 @@
 
 				<!-- Traits -->
 
-				<div class="traits character-info"></div>
+				<div class="traits character-data-set"></div>
 				<h2>Traits</h2>
 				<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%>
 
@@ -71,7 +71,7 @@
 			</div>
 			<!-- Power stats-->
 
-			<div class="stats character-info">
+			<div class="stats character-data-set">
 				<h2>Stats</h2>
 				<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = ""; } %>
 				<label for="<%= stat %>">
@@ -84,7 +84,7 @@
 				<% } %>
 			</div>
 
-			<div class="affiliations character-info">
+			<div class="affiliations character-data-set">
 				<% let affiliations = data.connections["group-affiliation"]; %> <% if (typeof affiliations === 'string') {%> <% affiliations = affiliations.split(',').map(item => item.trim());%> <% }%> <%if (affiliations && affiliations.length > 0) { %>
 				<h2>Group Affiliations <span>(<%= affiliations[0] == "-" ? "0" : affiliations.length %>)</span></h2>
 				<ul>

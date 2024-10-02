@@ -10,8 +10,9 @@ ul {
 
 
 .character-image {
-    height: 200px;
-    width: 200px;
+    border-radius: 50%;
+    height: 180px;
+    width: 180px;
     overflow: hidden;
     img {
         max-width: 100%;

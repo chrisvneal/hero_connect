@@ -17,4 +17,8 @@ ul {
   height: auto;
 }
 
+.character-info {
+  outline: 1px dotted lightgray;
+}
+
 /*# sourceMappingURL=styles.css.map */

@@ -1,3 +1,4 @@
+$lightgray: lighten(lightgray, 7%);
 * {
 	margin: 0;
 	padding: 0;
@@ -38,7 +39,7 @@ border-top: none;
 }
 
 .character-data-set {
-    border-top: 2px solid lightgray;
+    border-top: 1px solid $lightgray;
     margin-bottom: 1.5rem;    
 
         li {
@@ -46,7 +47,7 @@ border-top: none;
         }   
 
     h2 {
-        margin-top: 0.20rem;
+        margin-top: 0.40rem;
     }
 }
 

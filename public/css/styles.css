@@ -35,14 +35,14 @@ ul {
 }
 
 .character-data-set {
-  border-top: 2px solid lightgray;
+  border-top: 1px solid rgb(228.85, 228.85, 228.85);
   margin-bottom: 1.5rem;
 }
 .character-data-set li {
   margin-bottom: 0.25rem;
 }
 .character-data-set h2 {
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
 }
 
 .mt-b {

@@ -57,18 +57,20 @@
 
 				<!-- Traits -->
 
-				<div class="traits character-data-set"></div>
-				<h2>Traits</h2>
-				<ul>
-					<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%> <% if (Array.isArray(value)) {%> <%value = value.map(sanitizeValue).filter(item => item !== "").join(', '); %> <%} else {%> <%value = sanitizeValue(value);%> <%}%> %>
-
-					<li>
-						<span class="character-property-title"><%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:</span>
-						<%= value %>
-					</li>
-
-					<% } %>
-				</ul>
+				<div class="traits character-data-set">
+					<h2>Traits</h2>
+					<ul>
+						<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%> <% if (Array.isArray(value)) {%> <%value = value.map(sanitizeValue).filter(item => item !== "").join(', '); %> <%} else {%> <%value = sanitizeValue(value);%> <%}%> %>
+	
+						<li>
+							<span class="character-property-title"><%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:</span>
+							<%= value %>
+						</li>
+	
+						<% } %>
+					</ul>
+			
+				
 			</div>
 			<!-- Power stats-->
 

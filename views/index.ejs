@@ -31,13 +31,15 @@
 				<!-- Bio info -->
 				<div class="bio character-data-set">
 					<h2 class="character__name"><%= data.name %> (<%= data.id %>)</h2>
-					<p class="alignment"><span class="character-property-title">Alignment: </span><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></p>
-					<%if (data.biography["full-name"]) {%>
-					<p><span class="character-property-title">Real Name: </span><%= data.biography["full-name"] %></p>
-					<%}%>
-					<p class="publisher"><span class="character-property-title">Publisher: </span><%= data.biography.publisher == "null" ? "Publisher unknown" : data.biography.publisher%></p>
-					<p><span class="character-property-title">First Appearance:</span> <%= sanitizeValue(data.biography["first-appearance"]) %></p>
-					<p><span class="character-property-title">Place of Birth: </span><%= data.biography["place-of-birth"] == "null" || data.biography["place-of-birth"] == "-" ? "Location unknown" : data.biography["place-of-birth"] %></p>
+					<ul>
+						<li class="alignment"><span class="character-property-title">Alignment: </span><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></li>
+						<%if (data.biography["full-name"]) {%>
+						<li><span class="character-property-title">Real Name: </span><%= data.biography["full-name"] %></li>
+						<%}%>
+						<li class="publisher"><span class="character-property-title">Publisher: </span><%= data.biography.publisher == "null" ? "Publisher unknown" : data.biography.publisher%></li>
+						<li><span class="character-property-title">First Appearance:</span> <%= sanitizeValue(data.biography["first-appearance"]) %></li>
+						<li><span class="character-property-title">Place of Birth: </span><%= data.biography["place-of-birth"] == "null" || data.biography["place-of-birth"] == "-" ? "Location unknown" : data.biography["place-of-birth"] %></li>
+					</ul>
 				</div>
 
 				<!-- Aliases  -->
@@ -57,35 +59,34 @@
 
 				<div class="traits character-data-set"></div>
 				<h2>Traits</h2>
-				<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%>
+				<ul>
+					<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%> <% if (Array.isArray(value)) {%> <%value = value.map(sanitizeValue).filter(item => item !== "").join(', '); %> <%} else {%> <%value = sanitizeValue(value);%> <%}%> %>
 
-				<!-- If value is an array, loop through its contents and sanitize each item -->
-				<% if (Array.isArray(value)) {%>
-				<!-- Join the array values into a string -->
-				<%value = value.map(sanitizeValue).filter(item => item !== "").join(', '); %> <%} else {%>
-				<!-- Sanitize single values -->
-				<%value = sanitizeValue(value);%> <%}%> %>
+					<li>
+						<span class="character-property-title"><%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:</span>
+						<%= value %>
+					</li>
 
-				<p>
-					<span class="character-property-title"><%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:</span>
-					<%= value %>
-				</p>
-
-				<% } %>
+					<% } %>
+				</ul>
 			</div>
 			<!-- Power stats-->
 
 			<div class="stats character-data-set">
 				<h2>Stats</h2>
-				<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = ""; } %>
-				<label for="<%= stat %>">
-					<h3>
-						<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
-						<span><%= value %></span>
-					</h3>
-				</label>
-				<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
-				<% } %>
+				<ul>
+					<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = ""; } %>
+					<li>
+						<label for="<%= stat %>">
+							<h3>
+								<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
+								<span><%= value %></span>
+							</h3>
+						</label>
+						<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
+					</li>
+					<% } %>
+				</ul>
 			</div>
 
 			<div class="affiliations character-data-set">

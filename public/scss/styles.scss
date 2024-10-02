@@ -1,3 +1,5 @@
+@import "partials/utility-classes";
+
 $lightgray: lighten(lightgray, 7%);
 * {
 	margin: 0;
@@ -12,9 +14,7 @@ ul {
     list-style: none;
 }
 
-.mt-b {
-    margin: 1rem 0;
-}
+
 
 .character-image {
     border-radius: 50%;

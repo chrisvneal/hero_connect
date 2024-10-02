@@ -12,43 +12,13 @@ app.use(express.urlencoded({ extended: true }));
 const API_KEY = process.env.API_KEY;
 const baseURL = "https://superheroapi.com/api/";
 const url = `${baseURL}${API_KEY}/`;
+const appName = "Hero Connect";
 
-app.get("/", async (req, res) => {
-	try {
-		// on default load, start with random character selected
-		const randomHeroID = Math.floor(Math.random() * 732 + 1);
-
-		const characterData = await getCharacterData(randomHeroID);
-		res.render("index.ejs", { title: "Hero Connect", data: characterData });
-	} catch (error) {
-		console.error(`There was an error: ${error}`);
-	}
-});
-
-app.post("/", async (req, res) => {
-	let searchedName;
-	try {
-		if (req.body.heroname) {
-			searchedName = req.body.heroname;
-		} else {
-			searchedName = Math.floor(Math.random() * 732 + 1);
-		}
-		const characterData = await getCharacterData(searchedName);
-
-		res.render("index.ejs", {
-			title: "Hero Connect",
-			data: characterData,
-		});
-	} catch (error) {
-		console.error(`There was an error: ${error}`);
-		res.status(500).send("An error occurred while searching for the hero.");
-	}
-});
-
+//  Function that retrieves character data from Superhero API
 let getCharacterData = async (character) => {
 	let response;
 
-	// if users text it should be concatenated with "search"
+	// if users provide text, the query string should be concatenated with "search/"
 	if (isNaN(character)) {
 		character = `search/${character}`;
 
@@ -62,6 +32,38 @@ let getCharacterData = async (character) => {
 
 	return response;
 };
+
+// When project loads, display random character before first selection is made
+app.get("/", async (req, res) => {
+	try {
+		const randomHeroID = Math.floor(Math.random() * 732 + 1);
+
+		const characterData = await getCharacterData(randomHeroID);
+		res.render("index.ejs", { title: appName, data: characterData });
+	} catch (error) {
+		console.error(`There was an error: ${error}`);
+	}
+});
+
+// Perform API search based on name provided to input
+app.post("/", async (req, res) => {
+	let searchedName;
+	try {
+		if (req.body.heroname) {
+			searchedName = req.body.heroname;
+		} else {
+			searchedName = Math.floor(Math.random() * 732 + 1);
+		}
+		const characterData = await getCharacterData(searchedName);
+
+		res.render("index.ejs", {
+			title: appName,
+			data: characterData,
+		});
+	} catch (error) {
+		res.status(500).send("An error occurred while searching for the hero.");
+	}
+});
 
 app.listen(port, () => {
 	console.log(`Server running on port ${port}`);

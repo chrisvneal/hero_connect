@@ -8,17 +8,14 @@ ul {
 }
 
 .character-image {
-  height: 200px;
-  width: 200px;
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
   overflow: hidden;
 }
 .character-image img {
   max-width: 100%;
   height: auto;
-}
-
-.character-info {
-  outline: 1px dotted lightgray;
 }
 
 /*# sourceMappingURL=styles.css.map */

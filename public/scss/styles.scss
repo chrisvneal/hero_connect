@@ -3,6 +3,10 @@
 	padding: 0;
 }
 
+body {
+    font-family:"Afacad Flux", sans-serif;
+}
+
 ul {
     list-style: none;
 }
@@ -18,4 +22,9 @@ ul {
         max-width: 100%;
         height: auto;
     }
+}
+
+.character__name {
+    // font-family: "Honk";
+    font-size: 1.8rem;
 }

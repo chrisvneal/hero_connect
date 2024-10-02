@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  font-family: "Afacad Flux", sans-serif;
+}
+
 ul {
   list-style: none;
 }
@@ -16,6 +20,10 @@ ul {
 .character-image img {
   max-width: 100%;
   height: auto;
+}
+
+.character__name {
+  font-size: 1.8rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

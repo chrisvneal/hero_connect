@@ -25,10 +25,31 @@ ul {
 }
 
 .character__name {
-    // font-family: "Honk";
     font-size: 1.8rem;
 }
 
 .character-id {
     font-size: 1.2rem;
+}
+
+.character-image + .character-data-set {
+border-top: none;
+
+}
+
+.character-data-set {
+    border-top: 2px solid lightgray;
+    margin-bottom: 1.5rem;    
+
+        li {
+            margin-bottom: .45rem;
+        }   
+
+    h2 {
+        margin-top: 0.20rem;
+    }
+}
+
+.character-image {
+    margin: 1rem 0;
 }

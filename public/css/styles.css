@@ -30,4 +30,23 @@ ul {
   font-size: 1.2rem;
 }
 
+.character-image + .character-data-set {
+  border-top: none;
+}
+
+.character-data-set {
+  border-top: 2px solid lightgray;
+  margin-bottom: 1.5rem;
+}
+.character-data-set li {
+  margin-bottom: 0.45rem;
+}
+.character-data-set h2 {
+  margin-top: 0.2rem;
+}
+
+.character-image {
+  margin: 1rem 0;
+}
+
 /*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,7 @@
 @import "partials/utility-classes";
 
 $lightgray: lighten(lightgray, 7%);
+$text-color: lighten(black, 22%);
 * {
 	margin: 0;
 	padding: 0;
@@ -8,6 +9,7 @@ $lightgray: lighten(lightgray, 7%);
 
 body {
     font-family:"Afacad Flux", sans-serif;
+    color: $text-color;
 } 
 
 ul {

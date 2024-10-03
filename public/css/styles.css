@@ -16,6 +16,11 @@ body {
   color: rgb(56.1, 56.1, 56.1);
 }
 
+h1 {
+  color: #FF3B3F;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 ul {
   list-style: none;
 }

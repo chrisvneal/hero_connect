@@ -67,4 +67,11 @@ ul {
   margin-top: 0.4rem;
 }
 
+input {
+  border: 1px solid red;
+}
+input:focus {
+  outline: none;
+}
+
 /*# sourceMappingURL=styles.css.map */

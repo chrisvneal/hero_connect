@@ -67,3 +67,11 @@ border-top: none;
     }
 }
 
+input {
+    border: 1px solid red;
+
+    &:focus {
+        outline: none;
+    }
+}
+

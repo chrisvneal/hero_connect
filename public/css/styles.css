@@ -29,7 +29,7 @@ ul {
   font-weight: 500;
 }
 
-.character-data-set h2 {
+.character__name, .character-data-set h2 {
   color: #0075ff;
 }
 

@@ -13,16 +13,30 @@
 
 body {
   font-family: "Afacad Flux", sans-serif;
+  color: rgb(56.1, 56.1, 56.1);
+}
+
+h1 {
+  color: #FF3B3F;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 ul {
   list-style: none;
 }
 
+.character-property-title {
+  font-weight: 500;
+}
+
+.character__name, .character-data-set h2 {
+  color: #0075ff;
+}
+
 .character-image {
   border-radius: 50%;
-  height: 180px;
-  width: 180px;
+  height: 120px;
+  width: 120px;
   overflow: hidden;
 }
 .character-image img {
@@ -51,6 +65,19 @@ ul {
 }
 .character-data-set h2 {
   margin-top: 0.4rem;
+}
+
+input {
+  border: 1px solid rgb(228.85, 228.85, 228.85);
+  height: 27px;
+  margin-right: 0.9rem;
+  padding: 2px 6px;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+input:focus {
+  outline: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

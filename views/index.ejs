@@ -27,10 +27,12 @@
 				<div class="character-image mt-b">
 					<img src="<%= data.image.url %>" alt="character profile image" />
 				</div>
+				<h2 class="character__name"><%= data.name %> <span class="character-id">(<%= data.id %>)</span></h2>
 
 				<!-- Bio info -->
 				<div class="bio character-data-set">
-					<h2 class="character__name"><%= data.name %> <span class="character-id">(<%= data.id %>)</span></h2>
+					<h2>Bio</h2>
+
 					<ul>
 						<li class="alignment"><span class="character-property-title">Alignment: </span><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></li>
 						<%if (data.biography["full-name"]) {%>
@@ -52,7 +54,6 @@
 						<%})%>
 					</ul>
 				</div>
-
 				<%}%>
 
 				<!-- Traits -->

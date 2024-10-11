@@ -1,6 +1,8 @@
+@use "sass:color";
 @import "partials/utility-classes";
 
-$lightgray: lighten(lightgray, 7%);
+$lightgray: color.adjust(lightgray, $lightness: 7%);
+$text-color: color.adjust(black, $lightness: 22%);
 * {
 	margin: 0;
 	padding: 0;
@@ -8,18 +10,32 @@ $lightgray: lighten(lightgray, 7%);
 
 body {
     font-family:"Afacad Flux", sans-serif;
+    color: $text-color;
 } 
+h1 {
+    color: #FF3B3F;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 
 ul {
     list-style: none;
+}
+
+.character-property-title {
+    font-weight: 500;
+    // color: #007bff;
+}
+
+.character__name, .character-data-set h2 {
+    color: #0075ff;
 }
 
 
 
 .character-image {
     border-radius: 50%;
-    height: 180px;
-    width: 180px;
+    height: 120px;
+    width: 120px;
     overflow: hidden;
     img {
         max-width: 100%;
@@ -49,6 +65,20 @@ border-top: none;
 
     h2 {
         margin-top: 0.40rem;
+    }
+}
+
+input {
+    border: 1px solid $lightgray;
+    height: 27px;
+    margin-right: 0.9rem;
+    padding: 2px 6px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.2rem;
+
+    &:focus {
+        outline: none;
     }
 }
 

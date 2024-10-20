@@ -9,7 +9,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -24,11 +23,6 @@ h1 {
 
 ul {
   list-style: none;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .character-property-title {
@@ -62,13 +56,6 @@ ul {
   border-top: none;
 }
 
-.btn {
-  border: 1px solid gray;
-  width: 80px;
-  padding: 5px 2px;
-  margin-right: 1rem;
-}
-
 .character-data-set {
   border-top: 1px solid rgb(228.85, 228.85, 228.85);
   margin-bottom: 1.5rem;
@@ -81,14 +68,13 @@ ul {
 }
 
 input {
-  width: 100%;
   border: 1px solid rgb(228.85, 228.85, 228.85);
-  height: 35px;
+  height: 27px;
+  margin-right: 0.9rem;
   padding: 2px 6px;
   font-family: inherit;
   font-weight: bold;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
 }
 input:focus {
   outline: none;

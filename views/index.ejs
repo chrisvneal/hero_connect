@@ -15,7 +15,9 @@
 		<% const sanitizeValue = function(val) {%> <% return (val === null || val === "null" || val === "-" || (typeof val === 'string' && val.includes('-'))) ? "" : val;%> <%};%>
 
 		<div class="container">
-			<h1 class="mt-b">Welcome to <%= title %></h1>
+			<header>
+				<h1 class="mt-b">Welcome to <%= title %></h1>
+			</header>
 
 			<div class="character-search">
 				<form action="/" method="post">

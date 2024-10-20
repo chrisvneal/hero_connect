@@ -62,6 +62,13 @@ ul {
   border-top: none;
 }
 
+.btn {
+  border: 1px solid gray;
+  width: 80px;
+  padding: 5px 2px;
+  margin-right: 1rem;
+}
+
 .character-data-set {
   border-top: 1px solid rgb(228.85, 228.85, 228.85);
   margin-bottom: 1.5rem;
@@ -76,7 +83,7 @@ ul {
 input {
   width: 100%;
   border: 1px solid rgb(228.85, 228.85, 228.85);
-  height: 27px;
+  height: 35px;
   padding: 2px 6px;
   font-family: inherit;
   font-weight: bold;

@@ -13,8 +13,10 @@
 	<body>
 		<!-- Function to handle null, "null", or "-" values -->
 		<% const sanitizeValue = function(val) {%> <% return (val === null || val === "null" || val === "-" || (typeof val === 'string' && val.includes('-'))) ? "" : val;%> <%};%>
+
 		<div class="container">
 			<h1 class="mt-b">Welcome to <%= title %></h1>
+
 			<div class="character-search">
 				<form action="/" method="post">
 					<input type="text" name="heroname" />
@@ -57,61 +59,60 @@
 				<%}%>
 
 				<!-- Traits -->
-
 				<div class="traits character-data-set">
 					<h2>Traits</h2>
 					<ul>
 						<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%> <% if (Array.isArray(value)) {%> <%value = value.map(sanitizeValue).filter(item => item !== "").join(', '); %> <%} else {%> <%value = sanitizeValue(value);%> <%}%> %>
-	
+
 						<li>
 							<span class="character-property-title"><%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:</span>
 							<%= value %>
 						</li>
-	
+
 						<% } %>
 					</ul>
-			
-				
-			</div>
-			<!-- Power stats-->
+				</div>
 
-			<div class="stats character-data-set">
-				<h2>Stats</h2>
-				<ul>
-					<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = ""; } %>
-					<li>
-						<label for="<%= stat %>">
-							<h3>
-								<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
-								<span><%= value %></span>
-							</h3>
-						</label>
-						<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
-					</li>
+				<!-- Power stats-->
+				<div class="stats character-data-set">
+					<h2>Stats</h2>
+					<ul>
+						<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = ""; } %>
+						<li>
+							<label for="<%= stat %>">
+								<h3>
+									<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
+									<span><%= value %></span>
+								</h3>
+							</label>
+							<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
+						</li>
+						<% } %>
+					</ul>
+				</div>
+
+				<!-- Affiliations-->
+				<div class="affiliations character-data-set">
+					<% let affiliations = data.connections["group-affiliation"]; %> <% if (typeof affiliations === 'string') {%> <% affiliations = affiliations.split(',').map(item => item.trim());%> <% }%> <%if (affiliations && affiliations.length > 0) { %>
+					<h2>Group Affiliations <span>(<%= affiliations[0] == "-" ? "0" : affiliations.length %>)</span></h2>
+					<ul>
+						<% affiliations.map(sanitizeValue).filter(val => val !=="-").forEach(affiliation => {%>
+						<li><%= affiliation %></li>
+
+						<%})%>
+					</ul>
+					<% } else { %>
+					<p>No group affiliations available.</p>
 					<% } %>
-				</ul>
+				</div>
+
+				<script>
+					// Add an event listener for the "Random" button
+					document.querySelector("#randomButton").addEventListener("click", () => {
+						document.querySelector("form").submit(); // This will submit the form
+					});
+				</script>
 			</div>
-
-			<div class="affiliations character-data-set">
-				<% let affiliations = data.connections["group-affiliation"]; %> <% if (typeof affiliations === 'string') {%> <% affiliations = affiliations.split(',').map(item => item.trim());%> <% }%> <%if (affiliations && affiliations.length > 0) { %>
-				<h2>Group Affiliations <span>(<%= affiliations[0] == "-" ? "0" : affiliations.length %>)</span></h2>
-				<ul>
-					<% affiliations.map(sanitizeValue).filter(val => val !=="-").forEach(affiliation => {%>
-					<li><%= affiliation %></li>
-
-					<%})%>
-				</ul>
-				<% } else { %>
-				<p>No group affiliations available.</p>
-				<% } %>
-			</div>
-
-			<script>
-				// Add an event listener for the "Random" button
-				document.querySelector("#randomButton").addEventListener("click", () => {
-					document.querySelector("form").submit(); // This will submit the form
-				});
-			</script>
 		</div>
 	</body>
 </html>

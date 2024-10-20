@@ -6,6 +6,7 @@ $text-color: color.adjust(black, $lightness: 22%);
 * {
 	margin: 0;
 	padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -19,6 +20,11 @@ h1 {
 
 ul {
     list-style: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .character-property-title {
@@ -69,13 +75,14 @@ border-top: none;
 }
 
 input {
+    width: 100%;
     border: 1px solid $lightgray;
     height: 27px;
-    margin-right: 0.9rem;
     padding: 2px 6px;
     font-family: inherit;
     font-weight: bold;
     font-size: 1.2rem;
+    margin-bottom: 1rem;
 
     &:focus {
         outline: none;

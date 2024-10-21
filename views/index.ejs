@@ -33,79 +33,81 @@
 				</div>
 				<h2 class="character__name"><%= data.name %> <span class="character-id">(<%= data.id %>)</span></h2>
 
-				<!-- Bio info -->
-				<div class="bio character-data-set">
-					<h2>Bio</h2>
+				<div class="character-data-sets">
+					<!-- Bio info -->
+					<div class="bio character-data-set">
+						<h2>Bio</h2>
 
-					<ul>
-						<li class="alignment"><span class="character-property-title">Alignment: </span><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></li>
-						<%if (data.biography["full-name"]) {%>
-						<li><span class="character-property-title">Real Name: </span><%= data.biography["full-name"] %></li>
-						<%}%>
-						<li class="publisher"><span class="character-property-title">Publisher: </span><%= data.biography.publisher == "null" ? "Publisher unknown" : data.biography.publisher%></li>
-						<li><span class="character-property-title">First Appearance:</span> <%= sanitizeValue(data.biography["first-appearance"]) %></li>
-						<li><span class="character-property-title">Place of Birth: </span><%= data.biography["place-of-birth"] == "null" || data.biography["place-of-birth"] == "-" ? "Location unknown" : data.biography["place-of-birth"] %></li>
-					</ul>
-				</div>
+						<ul>
+							<li class="alignment"><span class="character-property-title">Alignment: </span><%= data.biography.alignment == "good" ? "Hero" : "Villian"; %></li>
+							<%if (data.biography["full-name"]) {%>
+							<li><span class="character-property-title">Real Name: </span><%= data.biography["full-name"] %></li>
+							<%}%>
+							<li class="publisher"><span class="character-property-title">Publisher: </span><%= data.biography.publisher == "null" ? "Publisher unknown" : data.biography.publisher%></li>
+							<li><span class="character-property-title">First Appearance:</span> <%= sanitizeValue(data.biography["first-appearance"]) %></li>
+							<li><span class="character-property-title">Place of Birth: </span><%= data.biography["place-of-birth"] == "null" || data.biography["place-of-birth"] == "-" ? "Location unknown" : data.biography["place-of-birth"] %></li>
+						</ul>
+					</div>
 
-				<!-- Aliases  -->
-				<%if (data.biography.aliases.length > 0 && data.biography.aliases[0]!=="-") { %>
-				<div class="aliases character-data-set">
-					<h2>Aliases</h2>
-					<ul class="character__aliases">
-						<%data.biography.aliases.forEach(alias => {%>
-						<li><%= alias %></li>
-						<%})%>
-					</ul>
-				</div>
-				<%}%>
+					<!-- Aliases  -->
+					<%if (data.biography.aliases.length > 0 && data.biography.aliases[0]!=="-") { %>
+					<div class="aliases character-data-set">
+						<h2>Aliases</h2>
+						<ul class="character__aliases">
+							<%data.biography.aliases.forEach(alias => {%>
+							<li><%= alias %></li>
+							<%})%>
+						</ul>
+					</div>
+					<%}%>
 
-				<!-- Traits -->
-				<div class="traits character-data-set">
-					<h2>Traits</h2>
-					<ul>
-						<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%> <% if (Array.isArray(value)) {%> <%value = value.map(sanitizeValue).filter(item => item !== "").join(', '); %> <%} else {%> <%value = sanitizeValue(value);%> <%}%> %>
+					<!-- Traits -->
+					<div class="traits character-data-set">
+						<h2>Traits</h2>
+						<ul>
+							<% for (let trait in data.appearance) { %> <% let value = data.appearance[trait];%> <% if (Array.isArray(value)) {%> <%value = value.map(sanitizeValue).filter(item => item !== "").join(', '); %> <%} else {%> <%value = sanitizeValue(value);%> <%}%> %>
 
-						<li>
-							<span class="character-property-title"><%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:</span>
-							<%= value %>
-						</li>
+							<li>
+								<span class="character-property-title"><%= trait.charAt(0).toUpperCase() + trait.slice(1) %>:</span>
+								<%= value %>
+							</li>
 
+							<% } %>
+						</ul>
+					</div>
+
+					<!-- Power stats-->
+					<div class="stats character-data-set">
+						<h2>Stats</h2>
+						<ul>
+							<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = ""; } %>
+							<li>
+								<label for="<%= stat %>">
+									<h3>
+										<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
+										<span><%= value %></span>
+									</h3>
+								</label>
+								<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
+							</li>
+							<% } %>
+						</ul>
+					</div>
+
+					<!-- Affiliations-->
+					<div class="affiliations character-data-set">
+						<% let affiliations = data.connections["group-affiliation"]; %> <% if (typeof affiliations === 'string') {%> <% affiliations = affiliations.split(',').map(item => item.trim());%> <% }%> <%if (affiliations && affiliations.length > 0) { %>
+						<h2>Group Affiliations <span>(<%= affiliations[0] == "-" ? "0" : affiliations.length %>)</span></h2>
+						<ul>
+							<% affiliations.map(sanitizeValue).filter(val => val !=="-").forEach(affiliation => {%>
+							<li><%= affiliation %></li>
+
+							<%})%>
+						</ul>
+						<% } else { %>
+						<p>No group affiliations available.</p>
 						<% } %>
-					</ul>
-				</div>
-
-				<!-- Power stats-->
-				<div class="stats character-data-set">
-					<h2>Stats</h2>
-					<ul>
-						<% for (let stat in data.powerstats) { %> <% let value = data.powerstats[stat]; %> <% if (value === null || value === "null") {%> <% value = ""; } %>
-						<li>
-							<label for="<%= stat %>">
-								<h3>
-									<%= stat.charAt(0).toUpperCase() + stat.slice(1) %>:
-									<span><%= value %></span>
-								</h3>
-							</label>
-							<progress id="<%= stat %>" value="<%= value %>" max="100"></progress>
-						</li>
-						<% } %>
-					</ul>
-				</div>
-
-				<!-- Affiliations-->
-				<div class="affiliations character-data-set">
-					<% let affiliations = data.connections["group-affiliation"]; %> <% if (typeof affiliations === 'string') {%> <% affiliations = affiliations.split(',').map(item => item.trim());%> <% }%> <%if (affiliations && affiliations.length > 0) { %>
-					<h2>Group Affiliations <span>(<%= affiliations[0] == "-" ? "0" : affiliations.length %>)</span></h2>
-					<ul>
-						<% affiliations.map(sanitizeValue).filter(val => val !=="-").forEach(affiliation => {%>
-						<li><%= affiliation %></li>
-
-						<%})%>
-					</ul>
-					<% } else { %>
-					<p>No group affiliations available.</p>
-					<% } %>
+					</div>
 				</div>
 
 				<script>

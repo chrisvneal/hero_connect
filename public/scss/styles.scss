@@ -83,6 +83,8 @@ border-top: none;
 
 input {
     width: 100%;
+    display: block;
+    max-width: 350px;
     border: 1px solid $lightgray;
     height: 35px;
     padding: 2px 6px;
@@ -95,4 +97,29 @@ input {
         outline: none;
     }
 }
+
+@media (min-width: 577px) {
+
+
+.character-data-sets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+
+    & > div {
+        width: 350px;
+    }
+}
+}
+
+@media (min-width: 850px) {
+
+.container {
+    width: 850px;
+    margin: 0 auto;
+
+}
+    
+    }
 
